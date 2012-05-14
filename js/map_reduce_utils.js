@@ -1,4 +1,4 @@
-function() {
+mr_utils = function() {
 // Adds common utility functions to the root JS object. These are then
 // available for use by the map-reduce functions for each measure.
 // lib/qme/mongo_helpers.rb executes this function on a database
@@ -171,3 +171,4 @@ function() {
   };
 
 }
+mr_utils();
