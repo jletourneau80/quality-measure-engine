@@ -140,7 +140,11 @@ mr_utils = function() {
     var earliest_birthdate = new Date(effective_date*1000);
     var difference = age;
     if (is_inclusive) difference += 1;
-    earliest_birthdate.setFullYear(earliest_birthdate.getFullYear()-difference);
+    if (difference < 1){
+      earliest_birthdate.setMonth(earliest_birthdate.getMonth()-(difference*12));
+    }else{
+     earliest_birthdate.setFullYear(earliest_birthdate.getFullYear()-difference);
+    }
     return earliest_birthdate.getTime()/1000;
   }
   
