@@ -15,6 +15,13 @@ mr_utils = function() {
     return _.compact(_.flatten(arguments));
   }
 
+  //takes an array of diagnosis with date: and priority: fields
+  // returns an array of dates that match the priority
+  root.filterForPriority = function(diagnosis, priority){
+    var priority_results = _.filter(diagnosis, function(diagnosis){ return diagnosis.priority.equals(priority); });
+    return _.pluck(priority_results,'date');
+  }
+
   // returns the number of values which fall between the supplied limits
   // value may be a number or an array of numbers
   root.inRange = function(value, min, max) {
