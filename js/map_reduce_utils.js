@@ -18,8 +18,13 @@ mr_utils = function() {
   //takes an array of diagnosis with date: and priority: fields
   // returns an array of dates that match the priority list
   root.filterForPriority = function(diagnosis, priority){
-    var priority_results = _.filter(diagnosis, function(diagnosis){ return _.any(diagnosis.priority,priority); });
-    return _.pluck(priority_results,'date');
+    if (arguments.length==2 && _.isArray(arguments[1])){
+      var priority_results = _.filter(diagnosis, function(diagnosis){ return _.any(priority,function(p){return diagnosis.priority;}); });
+      return _.pluck(priority_results,'date');
+    }
+
+     return _.pluck(diagnosis,'date');
+   
   }
 
   // returns the number of values which fall between the supplied limits
