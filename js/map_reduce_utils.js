@@ -16,9 +16,9 @@ mr_utils = function() {
   }
 
   //takes an array of diagnosis with date: and priority: fields
-  // returns an array of dates that match the priority
+  // returns an array of dates that match the priority list
   root.filterForPriority = function(diagnosis, priority){
-    var priority_results = _.filter(diagnosis, function(diagnosis){ return diagnosis.priority.equals(priority); });
+    var priority_results = _.filter(diagnosis, function(diagnosis){ return _.any(diagnosis.priority,priority); });
     return _.pluck(priority_results,'date');
   }
 
